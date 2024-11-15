@@ -1,6 +1,6 @@
 ---
 import Header from "../../src/components/Header.astro"
-
+import Particles from "../../src/components/Particles.astro";
 
 const pageTitle = "";
 ---
@@ -12,11 +12,15 @@ const pageTitle = "";
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="stylesheet" href="src/styles/global.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
 		<title>{pageTitle}</title>
 	</head>
 	<body>
 		<Header>
             
         </Header>
+		
 	</body>
 </html>

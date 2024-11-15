@@ -3,6 +3,8 @@
 const pageTitle = "Log In";
 
 import BaseLayout from "../../public/layouts/BaseLayout.astro";
+import LoginForm from "../components/LoginForm.astro";
+import Particles from "../components/Particles.astro";
 
 ---
 <link rel="stylesheet" href="src/styles/global.css">
@@ -12,10 +14,24 @@ import BaseLayout from "../../public/layouts/BaseLayout.astro";
 <BaseLayout />
 
 <div id="container-main-login">
-    <div id="left-container">
-        <div id="container-form-login"></div>
+    <Particles />
+    <div id="wrapper-title-back">
+        <h1>Welcome Back!</h1>
     </div>
-    <div id="right-container">
-        <img src="/assets/imagenes/super.avif">
+    <div id="container-form">
+        <LoginForm />
+        <div id="spacer-login">- Or -</div>
+        <div id="wrapper-button-register">
+            <button id="button-register">Create an account</button>
+        </div>
     </div>
+
 </div>
+
+<script>
+    // Agregar evento en el boton de crear cuenta paras redirigir al register page 
+    const redirectRegister = document.getElementById('button-register').addEventListener('click', () =>  {
+        window.location.href = '/register';
+    })
+
+</script>

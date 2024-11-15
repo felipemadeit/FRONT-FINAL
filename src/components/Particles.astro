@@ -1,0 +1,20 @@
+<canvas id="canvas">
+
+</canvas>
+
+
+<script>
+    import { Application} from '@splinetool/runtime';
+
+
+    const canvas = document.getElementById('canvas');
+
+    if (canvas instanceof HTMLCanvasElement) {
+        const app = new Application(canvas);
+        app.load('https://prod.spline.design/L3VdcxV6lxBt9E16/scene.splinecode');
+    } else {
+        console.error("Canvas Element no found");
+    }
+
+</script>
+

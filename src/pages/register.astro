@@ -1,0 +1,23 @@
+---
+
+const pageTitle = 'Register';
+
+import BaseLayout from "../../public/layouts/BaseLayout.astro";
+import RegisterForm from "../components/RegisterForm.astro";
+import Particles from "../components/Particles.astro";
+
+---
+
+<link rel="stylesheet" href="src/styles/global.css">
+
+<title>{pageTitle}</title>
+
+<BaseLayout />
+
+<div id="container-main-register">
+    <Particles />
+    <div id="container-title-register">Create your administrator account</div>
+   <div id="container-form-register">
+    <RegisterForm />
+    
+</div>
