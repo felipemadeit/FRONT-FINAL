@@ -1,0 +1,30 @@
+---
+const pageTitle = "DashBoard Supermarket";
+import BaseLayout from '../../dist/layouts/BaseLayout.astro';
+import GridDashboard from '../components/GridDashboard.astro';
+import { isAuthenticated } from '../utils/auth.js';
+
+// En el lado del servidor, redirigir al login  
+if (Astro.cookies.has('token')) {
+  // Si no hay cookie de token, redirigir
+  return Astro.redirect('/login');
+}
+---
+
+<title>{pageTitle}</title>
+
+<BaseLayout/>
+<GridDashboard/>
+
+
+<script>
+  import { redirectToLoginIfNotAuthenticated } from '../utils/auth.js';
+  
+    // Verificar si las cookies tienen el jwt y no ha expirado de parte del cliente no servidor
+  redirectToLoginIfNotAuthenticated();
+  
+// Verificación cada cierto tiempo para ver que esta validoe el jwt, JUST FOR SECURITY :)
+  setInterval(() => {
+    redirectToLoginIfNotAuthenticated();
+  }, 60000); 
+</script>

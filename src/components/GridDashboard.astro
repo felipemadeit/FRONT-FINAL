@@ -1,0 +1,75 @@
+---
+---
+
+
+<link rel="stylesheet" href="src/styles/global.css">
+
+<div id="grid-dashboard">
+    <div id="left-list-dash">
+        <ul>
+            <li>Products</li>
+            <li>Lots</li>
+            <li>Bills</li>
+            <li>Stores</li>
+        </ul>
+    </div>
+    <div id="right-content-dash">
+        <div id="products-content" class="content-section hidden">
+            <h2>Products Content</h2>
+        </div>
+
+        <div id="lots-content" class="content-section hidden">
+            <h2>Lots content</h2>
+        </div>
+
+        <div id="bills-content" class="content-section hidden">
+            <h2>Bills content</h2>
+        </div>
+
+        <div id="stores-content" class="content-section hidden">
+            <h2>Stores-content</h2>  
+        </div>
+    </div>
+</div>
+
+
+<script>
+   document.addEventListener("DOMContentLoaded", () => {
+        const menuItems = document.querySelectorAll('#left-list-dash ul li');
+        const contentSections = document.querySelectorAll('.content-section');
+
+        // Mostrar Products por defecto
+        document.getElementById('products-content').classList.remove('hidden');
+        menuItems[0].classList.add('active');
+
+        // Agregar texto del li como data-content si no existe
+        menuItems.forEach(item => {
+            if (!item.getAttribute('data-content')) {
+                const text = item.textContent?.toLowerCase() || '';
+                item.setAttribute('data-content', text);
+            }
+        });
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Remover active de todos los items
+                menuItems.forEach(i => i.classList.remove('active'));
+                
+                // Agregar active al item clickeado
+                item.classList.add('active');
+
+                // Ocultar todas las secciones
+                contentSections.forEach(section => {
+                    section.classList.add('hidden');
+                });
+
+                // Obtener el contenido correspondiente y mostrarlo
+                const contentId = `${item.getAttribute('data-content')}-content`;
+                const contentElement = document.getElementById(contentId);
+                if (contentElement) {
+                    contentElement.classList.remove('hidden');
+                }
+            });
+        });
+    });
+</script>

@@ -1,4 +1,7 @@
 body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0;
     padding: 0;
     background-color: black;
@@ -47,16 +50,18 @@ header {
 
 #container-form {
     display: flex;
+    position: absolute;
+    top: 200px;
     align-items: center;
+    padding: 0;
     justify-content: center;
     flex-direction: column;
     width: 400px;
     height: 400px;
-
 }
 
 input {
-    
+
     padding: 5px 50px;
     box-sizing: border-box;
     width: 300px;
@@ -67,9 +72,6 @@ input {
     color: white;
 }
 
-input:focus {
-    border: 2px solid red;
-}
 
 
 
@@ -87,7 +89,7 @@ input:focus {
     align-items: center;
     position: relative;
     margin-bottom: 20px;
-}   
+}
 
 #wrapper-input-password {
     display: flex;
@@ -116,7 +118,7 @@ input:focus {
     padding: 0;
     text-align: center;
     justify-content: center;
-    align-items : center;
+    align-items: center;
     color: white;
     font-family: "Doto";
     font-size: 20px;
@@ -127,27 +129,59 @@ input:focus {
     justify-content: center;
     align-items: center;
     position: absolute;
-    margin-top: 250px;
+    margin-top: 230px;
     width: 250px;
     height: 10px;
     color: white;
 }
 
-#wrapper-button-register {
-    display: flex;
-    position: absolute;
-    margin-top: 350px;
-    width: 250px;
-    height: auto;
-}
 
-#button-register {
-    width: 250px;
+#button-submit-login {
+    width: 300px;
     height: 30px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
     background-color: white;
+    cursor: pointer;
+    transition: background-color 0.4s ease-out, color 0.4s ease-in;
+}
+
+#button-submit-login:hover {
+    background-color: black;
+    color: white;
+}
+
+#wrapper-button-login {
+    display: flex;
+    position: absolute;
+    width: 300px;
+    height: auto;
+}
+
+#wrapper-button-register {
+    display: flex;
+    position: absolute;
+    margin-top: 310px;
+    width: 300px;
+    height: auto;
+}
+
+#button-register {
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: white;
+    transition: background-color 0.4s ease-out, color 0.4s ease-in;
+
+}
+
+#button-register:hover {
+    background-color: black;
+    color: white;
+
 }
 
 #container-form-register {
@@ -200,7 +234,7 @@ input:focus {
     align-items: center;
     position: relative;
     margin-bottom: 20px;
-    
+
 }
 
 #wrapper-input-name svg {
@@ -212,13 +246,13 @@ input:focus {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    
+
 }
 
-#wrapper-input-document svg{
+#wrapper-input-document svg {
     position: absolute;
     margin-left: 15px;
-    
+
 }
 
 
@@ -226,62 +260,64 @@ input:focus {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    
+
 }
 
-#wrapper-input-phone svg{
+#wrapper-input-phone svg {
     position: absolute;
     margin-left: 15px;
-    
+
 }
 
 #wrapper-input-email {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    
+
 }
 
-#wrapper-input-email svg{
+#wrapper-input-email svg {
     position: absolute;
     margin-left: 15px;
-    
+
 }
 
 #wrapper-input-username {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    
+
 }
 
-#wrapper-input-username svg{
+#wrapper-input-username svg {
     position: absolute;
     margin-left: 15px;
-    
+
 }
 
 #wrapper-input-password {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    
+
 }
 
-#wrapper-input-password svg{
+#wrapper-input-password svg {
     position: absolute;
     margin-left: 15px;
-    
+
 }
 
 #wrapper-button-create-acc {
     display: flex;
     position: absolute;
-
+    width: 100%;
+    padding: 0;
     justify-content: center;
     align-content: center;
     top: 420px;
-    
+    left: 0;
+
 }
 
 #button-register {
@@ -299,4 +335,139 @@ input:focus {
     height: 700px;
     justify-content: center;
     align-items: center;
+}
+
+#wrapper-notification {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: right;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+    overflow-x: hidden;
+    z-index: 100;
+    pointer-events: none;
+}
+
+#event-notification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 50px;
+    background-color: black;
+    border-radius: 20px;
+    border: 2px solid white;
+    color: white;
+    transform: translateX(340px);
+    transition: transform .5s ease-in-out;
+    pointer-events: auto;
+    font-family: "Doto";
+
+}
+
+.moved-notification {
+    transform: translateX(0) !important;
+}
+
+.notification-success {
+    background-color: green;
+
+}
+
+.notification-error {}
+
+.notification-warning {
+    background-color: blue;
+}
+
+.error-message {
+    color: brown;
+    text-align: center;
+}
+
+
+
+#grid-dashboard {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    position: absolute;
+    opacity: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    height: 85%;
+    min-height: 80%;
+    background: rgba(0, 73, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+
+
+#left-list-dash {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+#left-list-dash ul {
+    display: flex;
+    width: auto;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    list-style: none;
+    color: white;
+    font-family: "Doto";
+    font-size: 30px;
+
+}
+
+#left-list-dash ul li {
+    transition:  0.3s ease;
+    cursor: pointer;
+}
+
+#left-list-dash ul li:hover ~ li {
+    filter: blur(5px);
+    opacity: 0.9;
+}
+
+#left-list-dash ul:has(li:hover) li {
+    filter: blur(5px);
+    opacity: 0.9;
+}
+
+#left-list-dash ul li:hover {
+    filter: blur(0) !important;
+    opacity: 1 !important;
+}
+
+#right-content-dash {
+    height: 100%;
+    background-color: blue;
+}
+
+.hidden {
+    display: none;
+}
+
+.content-section {
+    height: 100%;
+}
+
+#left-list-dash ul li.active {
+    color: blue;
+    transform: scale(1.05);
 }

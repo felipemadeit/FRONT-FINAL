@@ -4,7 +4,30 @@ import BaseLayout from "../../public/layouts/BaseLayout.astro";
 const pageTitle = "";
 
 ---
-
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous">
+<title>HOME</title>
 
 <BaseLayout />
+
+
+    <div class="main-title">WELCOME TO THE NEW ERA.... SUPERMARKET!!!</div>
+    <div class="main-container">
+        <div class="icons">
+            <div class="icon"><i class="fas fa-minus"></i></div>
+            <div class="icon"><i class="far fa-square"></i></div>
+            <div class="icon"><i class="fas fa-times"></i></div>
+        </div>
+        <div class="main-window">
+            <div class="wrapper-button-login">
+                <div id="button-login">Iniciar Sesión</div>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+    // Agregar evento en el boton de iniciar sesión para redirigir al login page 
+    const redirectLogin = document.getElementById('button-login').addEventListener('click', () =>  {
+        window.location.href = '/login';
+    })
+</script>

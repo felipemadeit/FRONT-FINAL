@@ -150,12 +150,44 @@
 </form>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("register-form") as HTMLFormElement;
+    const errorMessage = document.getElementById("error-message");
+    const notificationDiv = document.getElementById("event-notification");
+
+    let timeoutId = null;
+
+    const showNotification = (message, type = "success", duration = 5000) => {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+            hideNotification();
+        }
+
+        notificationDiv.className = ""; // Clear existing classes
+        notificationDiv.classList.add("event-notification", `notification-${type}`);
+        notificationDiv.textContent = message;
+
+        setTimeout(() => {
+            notificationDiv.classList.add("moved-notification");
+        }, 100);
+
+        timeoutId = setTimeout(() => {
+            hideNotification();
+        }, duration);
+    };
+
+    const hideNotification = () => {
+        notificationDiv.classList.remove("moved-notification");
+    };
 
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
-        const formData = new FormData(form);
+
+        if (errorMessage) {
+            errorMessage.classList.add("hidden");
+            errorMessage.textContent = "";
+        }
+
+        const formData = new FormData(form) ;
         const nombre = formData.get("name");
         const documento = formData.get("dni");
         const numero = formData.get("phone");
@@ -179,21 +211,38 @@
                         documento,
                         telefono: numero,
                     }),
-                },
+                }
             );
 
-            if (!response.ok) {
-                throw new Error("Error en la validación");
+            const text = await response.text();
+            let data;
+
+            try {
+                data = JSON.parse(text);
+            } catch {
+                data = { message: text };
             }
 
-            const data = await response.json();
+            if (!response.ok) {
+                const errorMessageText = data.message || "An error occurred during registration.";
+                showNotification(errorMessageText, "error");
+                throw new Error(errorMessageText);
+            }
 
+            // Registro exitoso
+            showNotification("Account created successfully!", "success");
             localStorage.setItem("token", data.token);
-            window.location.href = "/";
+
+            setTimeout(() => {
+                window.location.href = "/login";
+            }, 3000);
         } catch (error) {
-            console.error("Error en el register", error);
+            console.error("Error in registration:", error);
+
+            if (errorMessage) {
+                errorMessage.classList.remove("hidden");
+                errorMessage.textContent = error.message || "Unknown error occurred.";
+            }
         }
     });
-});
-
 </script>

@@ -1,53 +1,140 @@
-<form class="login-form" id="login-form" >
+<form class="login-form" id="login-form">
     <div id="wrapper-input-username">
-        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="#ffffff"  class="icon icon-tabler icons-tabler-filled icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M22 7.535v9.465a3 3 0 0 1 -2.824 2.995l-.176 .005h-14a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-9.465l9.445 6.297l.116 .066a1 1 0 0 0 .878 0l.116 -.066l9.445 -6.297z" /><path d="M19 4c1.08 0 2.027 .57 2.555 1.427l-9.555 6.37l-9.555 -6.37a2.999 2.999 0 0 1 2.354 -1.42l.201 -.007h14z" /></svg>
-        <input id="username" type="text" name="username" required placeholder="Enter your username"/>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" class="icon icon-tabler icons-tabler-filled icon-tabler-mail">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M22 7.535v9.465a3 3 0 0 1 -2.824 2.995l-.176 .005h-14a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-9.465l9.445 6.297l.116 .066a1 1 0 0 0 .878 0l.116 -.066l9.445 -6.297z" />
+            <path d="M19 4c1.08 0 2.027 .57 2.555 1.427l-9.555 6.37l-9.555 -6.37a2.999 2.999 0 0 1 2.354 -1.42l.201 -.007h14z" />
+        </svg>
+        <input 
+            id="username" 
+            type="text" 
+            name="username" 
+            required 
+            placeholder="Enter your username"
+        />
     </div>
     <div id="wrapper-input-password">
-        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="#ffffff"  class="icon icon-tabler icons-tabler-filled icon-tabler-key"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.52 2c1.029 0 2.015 .409 2.742 1.136l3.602 3.602a3.877 3.877 0 0 1 0 5.483l-2.643 2.643a3.88 3.88 0 0 1 -4.941 .452l-.105 -.078l-5.882 5.883a3 3 0 0 1 -1.68 .843l-.22 .027l-.221 .009h-1.172c-1.014 0 -1.867 -.759 -1.991 -1.823l-.009 -.177v-1.172c0 -.704 .248 -1.386 .73 -1.96l.149 -.161l.414 -.414a1 1 0 0 1 .707 -.293h1v-1a1 1 0 0 1 .883 -.993l.117 -.007h1v-1a1 1 0 0 1 .206 -.608l.087 -.1l1.468 -1.469l-.076 -.103a3.9 3.9 0 0 1 -.678 -1.963l-.007 -.236c0 -1.029 .409 -2.015 1.136 -2.742l2.643 -2.643a3.88 3.88 0 0 1 2.741 -1.136m.495 5h-.02a2 2 0 1 0 0 4h.02a2 2 0 1 0 0 -4" /></svg>
-        <input id="password" class="input-password" type="password" name="password" required minlength="6" placeholder="Enter your password"/>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" class="icon icon-tabler icons-tabler-filled icon-tabler-key">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M14.52 2c1.029 0 2.015 .409 2.742 1.136l3.602 3.602a3.877 3.877 0 0 1 0 5.483l-2.643 2.643a3.88 3.88 0 0 1 -4.941 .452l-.105 -.078l-5.882 5.883a3 3 0 0 1 -1.68 .843l-.22 .027l-.221 .009h-1.172c-1.014 0 -1.867 -.759 -1.991 -1.823l-.009 -.177v-1.172c0 -.704 .248 -1.386 .73 -1.96l.149 -.161l.414 -.414a1 1 0 0 1 .707 -.293h1v-1a1 1 0 0 1 .883 -.993l.117 -.007h1v-1a1 1 0 0 1 .206 -.608l.087 -.1l1.468 -1.469l-.076 -.103a3.9 3.9 0 0 1 -.678 -1.963l-.007 -.236c0 -1.029 .409 -2.015 1.136 -2.742l2.643 -2.643a3.88 3.88 0 0 1 2.741 -1.136m.495 5h-.02a2 2 0 1 0 0 4h.02a2 2 0 1 0 0 -4" />
+        </svg>
+        <input 
+            id="password" 
+            class="input-password" 
+            type="password" 
+            name="password" 
+            required 
+            minlength="6" 
+            placeholder="Enter your password"
+        />
     </div>
-    <br />
-    <button id="button-submit-login" type="submit">Log In</button>
+    <div id="wrapper-button-login">
+        <button id="button-submit-login" type="submit">Log In</button>
+    </div>
 </form>
+
+
+
+
+
 
 <script>
     const form = document.getElementById('login-form') as HTMLFormElement;
+    const errorMessage = document.getElementById('error-message');
+    const notificationDiv = document.getElementById('event-notification');
+    let timeoutId: number | null = null;
 
-
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-
-
-        const formData = new FormData(form);
-        const usuario = formData.get('username');
-        const contraseña = formData.get('password');
-
-
-        try {
-
-            const response = await fetch('http://localhost:8081/api/auth/admin/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username: usuario, password: contraseña })
-            });
-
-
-            if(!response.ok) {
-                throw new Error('Error en la validación');
-            }
-
-            const data = await response.json();
-            localStorage.setItem('token', data.token);
-            window.location.href = '/';
-            
-        } catch (error) {
-            console.error('Error en el login: ', error);
-            console.log(usuario);
-            console.log(contraseña);
+    const showNotification = (message: string, type: "success" | "error" | "warning" = "success", duration: number = 5000) => {
+        if(timeoutId) {
+            clearTimeout(timeoutId);
+            hideNotification();
         }
 
-    });
+        notificationDiv.className = '';
+        notificationDiv.classList.add('event-notification');
+        notificationDiv.classList.add(`notification-${type.toLowerCase()}`);
+        notificationDiv.textContent = message;
+
+        setTimeout(() => {
+            notificationDiv.classList.add('moved-notification');
+        }, 100);
+
+        timeoutId = setTimeout(() => {
+            hideNotification();
+        }, duration);
+    };
+
+    const hideNotification = () => {
+        notificationDiv.classList.remove('moved-notification');
+    };
+
+    form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    if (errorMessage) {
+        errorMessage.classList.add('hidden');
+        errorMessage.textContent = '';
+    }
+
+    const formData = new FormData(form);
+    const loginData = {
+        username: formData.get('username'),
+        password: formData.get('password')
+    };
+
+    try {
+        const response = await fetch('http://localhost:8080/api/auth/admin/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: 'include',
+            body: JSON.stringify(loginData)
+        });
+
+        // Leer el cuerpo de la respuesta como texto
+        const text = await response.text();
+
+        // Intentar parsear el texto como JSON
+        let data;
+        try {
+            data = JSON.parse(text);
+        } catch {
+            data = { message: text };
+        }
+
+        if (!response.ok) {
+            // Mostrar notificaciones específicas según el código de estado
+            switch (response.status) {
+                case 401:
+                    showNotification('Credenciales inválidas', 'error');
+                    break;
+                case 404:
+                    showNotification('Usuario no encontrado', 'error');
+                    break;
+                case 400:
+                    showNotification(data.message || 'Error en los datos enviados', 'warning');
+                    break;
+                default:
+                    showNotification(data.message || 'Error en el servidor', 'error');
+            }
+            return;
+        }
+
+        // Login exitoso
+        showNotification('¡Inicio de sesión exitoso!', 'success');
+        localStorage.setItem('token', data.token);
+
+        setTimeout(() => {
+            window.location.href = '/dashboard';
+        }, 1500);
+
+    } catch (error) {
+        console.error('Error en el login:', error);
+        showNotification('Error de conexión con el servidor', 'error');
+    }
+});
+
+
 </script>
