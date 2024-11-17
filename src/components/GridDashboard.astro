@@ -1,4 +1,10 @@
 ---
+
+import { fetchProductos, crearProducto, actualizarProducto, eliminarProducto } from "../service/Producto";
+
+
+
+
 ---
 
 
@@ -15,7 +21,7 @@
     </div>
     <div id="right-content-dash">
         <div id="products-content" class="content-section hidden">
-            <h2>Products Content</h2>
+            
         </div>
 
         <div id="lots-content" class="content-section hidden">
@@ -34,7 +40,11 @@
 
 
 <script>
- import { fetchProductos } from '../service/Producto.js';
+    import { fetchProductos } from '../service/Producto.js';
+    document.addEventListener("DOMContentLoaded", async () => {
+        const productos = await fetchProductos();
+        console.log(productos);
+    });
 
    document.addEventListener("DOMContentLoaded", () => {
         const menuItems = document.querySelectorAll('#left-list-dash ul li');

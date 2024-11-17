@@ -1,16 +1,18 @@
-// GET: Obtener todos los productos
-async function fetchProductos() {
+export async function fetchProductos() {
+    const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZXJvMjAwNSIsImlhdCI6MTczMTgxMzY5MywiZXhwIjoxNzMxODE1MTMzfQ.ZPvsLJ6EaaQUGGTAdhT15YpSRb6l6QWEae42jxjr3Tk';
     try {
         const response = await fetch("http://localhost:8080/producto/getProductos", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}` // Incluye el token si es necesario
             },
+            credentials: 'include' // Esto es opcional y depende de tus necesidades
         });
 
         if (!response.ok) {
-            const errorMessage = `Error: ${response.status} - ${response.statusText}`;
-            throw new Error(errorMessage);
+            const errorText = await response.text(); // Captura el texto del error
+            throw new Error(`Error: ${response.status} - ${response.statusText}. Detalles: ${errorText}`);
         }
 
         const data = await response.json();
@@ -22,7 +24,7 @@ async function fetchProductos() {
 }
 
 // POST: Crear un nuevo producto
-async function crearProducto(producto) {
+export async function crearProducto(producto) {
     try {
         const response = await fetch("http://localhost:8080/producto/crearProducto", {
             method: "POST",
@@ -46,7 +48,7 @@ async function crearProducto(producto) {
 }
 
 // PUT: Actualizar un producto por ID
-async function actualizarProducto(id, producto) {
+export async function actualizarProducto(id, producto) {
     try {
         const response = await fetch(`http://localhost:8080/producto/${id}/actualizarProducto`, {
             method: "PUT",
@@ -70,7 +72,7 @@ async function actualizarProducto(id, producto) {
 }
 
 // DELETE: Eliminar un producto por ID
-async function eliminarProducto(id) {
+export async function eliminarProducto(id) {
     try {
         const response = await fetch(`http://localhost:8080/producto/${id}/eliminarProducto`, {
             method: "DELETE",
@@ -89,11 +91,3 @@ async function eliminarProducto(id) {
         console.error("Error al eliminar producto:", error);
     }
 }
-
-// Exportar las funciones
-module.exports = {
-    fetchProductos,
-    crearProducto,
-    actualizarProducto,
-    eliminarProducto,
-};
